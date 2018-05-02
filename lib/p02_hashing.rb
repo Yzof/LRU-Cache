@@ -6,6 +6,10 @@ class Array
   def hash
     total = 0
     self.each_with_index do |num, idx|
+      if num.class == Array
+        total += num.hash
+        next
+      end
       total += (idx + 1) * num
     end
     total.hash
@@ -37,6 +41,5 @@ class Hash
       keys[idx] = hash
     end
     keys.hash
-
   end
 end
